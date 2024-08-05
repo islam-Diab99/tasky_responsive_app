@@ -16,7 +16,7 @@ void main() async {
   setupGetIt();
   await ScreenUtil.ensureScreenSize();
   runApp(DevicePreview(
-    enabled: true,
+    enabled: false,
     builder: (context) => TaskyApp(
       appRouter: AppRouter(),
     ),
