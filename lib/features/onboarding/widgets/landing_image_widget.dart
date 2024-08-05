@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasky/Core/assets_manager.dart';
@@ -14,7 +16,7 @@ class LandingImage extends StatelessWidget {
       ImagesManager.landingImage,
       height: screenheight * .64,
       width: double.infinity,
-      fit: BoxFit.contain,
+      fit: Platform.isWindows ? BoxFit.contain : BoxFit.cover,
     );
   }
 }
