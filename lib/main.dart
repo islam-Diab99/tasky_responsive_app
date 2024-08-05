@@ -16,7 +16,7 @@ void main() async {
   setupGetIt();
   await ScreenUtil.ensureScreenSize();
   runApp(DevicePreview(
-    enabled: false,
+    enabled: true,
     builder: (context) => TaskyApp(
       appRouter: AppRouter(),
     ),
@@ -25,6 +25,9 @@ void main() async {
 
 getUserAuthStatus() async {
   var accesstoken;
-  accesstoken = await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
-  accesstoken.toString().isEmpty ? isloggedInUser = false : isloggedInUser = true;
+  accesstoken =
+      await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
+  accesstoken.toString().isEmpty
+      ? isloggedInUser = false
+      : isloggedInUser = true;
 }

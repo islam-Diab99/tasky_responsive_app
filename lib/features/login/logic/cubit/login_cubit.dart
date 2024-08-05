@@ -13,8 +13,13 @@ class LoginCubit extends Cubit<LoginState> {
 
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-    String? fullPhoneNumberValue;
+  String? fullPhoneNumberValue;
   final formKey = GlobalKey<FormState>();
+
+  void _disposeControllers() {
+    phoneController.clear();
+    passwordController.clear();
+  }
 
   void emitLoginStates() async {
     emit(const LoginState.loading());
@@ -25,13 +30,17 @@ class LoginCubit extends Cubit<LoginState> {
       ),
     );
     response.when(success: (loginResponse) async {
+    
+
       await saveUserAcessToken(loginResponse.accessToken ?? '');
       await saveUserRefreshToken(loginResponse.refreshToken ?? '');
-            await saveUserId(loginResponse.id ?? '');
+      await saveUserId(loginResponse.id ?? '');
 
       emit(LoginState.success(loginResponse));
+      _disposeControllers();
     }, failure: (error) {
       emit(LoginState.error(error: error.apiErrorModel.message ?? ''));
+        
     });
   }
 
@@ -42,10 +51,9 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> saveUserRefreshToken(String token) async {
     await SharedPrefHelper.setSecuredString(SharedPrefKeys.refreshToken, token);
-  
   }
-   Future<void> saveUserId(String userId) async {
+
+  Future<void> saveUserId(String userId) async {
     await SharedPrefHelper.setSecuredString(SharedPrefKeys.userId, userId);
-  
   }
 }

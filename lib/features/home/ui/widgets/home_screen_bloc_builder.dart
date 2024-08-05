@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasky/Core/helpers/utils_functions.dart';
 import 'package:tasky/Core/theming/colors.dart';
 import 'package:tasky/Core/theming/styles.dart';
@@ -53,11 +54,14 @@ class HomeScreenBlocBuilder extends StatelessWidget {
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          'No Tasks',
-                          style: TextStyles.font18DarkGreyBold,
+                        Container(
+                          alignment: Alignment.center,
+                          height: MediaQuery.of(context).size.height - 250.h,
+                          child: Text(
+                            'No Tasks',
+                            style: TextStyles.font18DarkGreyBold,
+                          ),
                         ),
                       ],
                     ),

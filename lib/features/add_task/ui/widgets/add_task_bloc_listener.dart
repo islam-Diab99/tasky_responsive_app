@@ -8,8 +8,9 @@ import 'package:tasky/features/add_task/logic/add_edit_task_states.dart';
 import 'package:tasky/features/home/logic/home_cubit.dart';
 
 class AddEditTaskBlocListener extends StatelessWidget {
-  const AddEditTaskBlocListener({super.key, required this.taskId});
+  const AddEditTaskBlocListener({super.key, required this.taskId, required this.isEdit});
   final String taskId;
+  final bool isEdit;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,9 @@ class AddEditTaskBlocListener extends StatelessWidget {
           ),
           uploadImageSuccess: (imagePath) {
             if (context.read<AddEditTaskCubit>().isEdit) {
-              context.read<AddEditTaskCubit>().emitUpdateTaskStates(imagePath, taskId, context);
+              context
+                  .read<AddEditTaskCubit>()
+                  .emitUpdateTaskStates(imagePath, taskId, context);
             } else {
               context.read<AddEditTaskCubit>().emitCreateTaskStates(imagePath);
             }
@@ -41,15 +44,15 @@ class AddEditTaskBlocListener extends StatelessWidget {
           ),
           success: (_) {
             context.read<HomeCubit>().getTasksForFirstTime();
-             context.pop();  
-              context.pop(); 
+            context.pop();
+            context.pop();
           },
           error: (error) {
-            Navigator.of(context).pop(); 
+            Navigator.of(context).pop();
             setupErrorState(context, error);
           },
           uploadImageError: (error) {
-           context.pop(); 
+            context.pop();
             setupErrorState(context, error);
           },
         );
@@ -58,4 +61,3 @@ class AddEditTaskBlocListener extends StatelessWidget {
     );
   }
 }
-

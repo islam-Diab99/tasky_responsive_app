@@ -58,7 +58,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
             padding: EdgeInsets.only(top: 8.h, bottom: 16.h),
             child: AppTextFormField(
                 controller: context.read<AddEditTaskCubit>().titleController,
-                hintText: 'Enter Title Here',
+                hintText: 'Enter Title Here...',
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'please enter title';
@@ -72,9 +72,11 @@ class _AddTaskFormState extends State<AddTaskForm> {
           Padding(
             padding: EdgeInsets.only(top: 8.h, bottom: 16.h),
             child: AppTextFormField(
+                maxLines: 5,
+                minLines: 5,
                 controller:
                     context.read<AddEditTaskCubit>().descriptionController,
-                hintText: 'Add description Here',
+                hintText: 'Add description Here...',
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'please enter description';

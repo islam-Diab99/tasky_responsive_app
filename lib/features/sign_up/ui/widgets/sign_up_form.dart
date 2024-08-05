@@ -25,7 +25,7 @@ class _SignupFormState extends State<SignupForm> {
       child: Column(
         children: [
           AppTextFormField(
-            hintText: 'Name',
+            hintText: 'Name...',
             validator: (value) {
               if (value.isNullOrEmpty()) {
                 return 'Please enter a valid name';
@@ -33,18 +33,17 @@ class _SignupFormState extends State<SignupForm> {
             },
             controller: context.read<SignupCubit>().nameController,
           ),
-          verticalSpace(18),
-            PhoneTextField(
-                phoneController: context.read<SignupCubit>().phoneController,
-               
-                onChanged: (fullPhoneNumber) {
-                  context.read<SignupCubit>().fullPhoneNumberValue = fullPhoneNumber;
-                  
-                },
-              ),
+          verticalSpace(15),
+          PhoneTextField(
+            phoneController: context.read<SignupCubit>().phoneController,
+            onChanged: (fullPhoneNumber) {
+              context.read<SignupCubit>().fullPhoneNumberValue =
+                  fullPhoneNumber;
+            },
+          ),
           AppTextFormField(
             keyboardType: TextInputType.number,
-            hintText: 'Years of Experience',
+            hintText: 'Years of experience',
             validator: (value) {
               if (value == null ||
                   value.isEmpty ||
@@ -54,12 +53,12 @@ class _SignupFormState extends State<SignupForm> {
             },
             controller: context.read<SignupCubit>().yearsOfExperinceController,
           ),
-          verticalSpace(18),
+          verticalSpace(15),
           ExperienceLevelDropButton(
             experiencelevelController:
                 context.read<SignupCubit>().experienceLevelController,
           ),
-          verticalSpace(18),
+          verticalSpace(15),
           AppTextFormField(
             controller: context.read<SignupCubit>().addressController,
             hintText: 'Address',
@@ -69,7 +68,7 @@ class _SignupFormState extends State<SignupForm> {
               }
             },
           ),
-          verticalSpace(18),
+          verticalSpace(15),
           AppTextFormField(
             controller: context.read<SignupCubit>().passwordController,
             hintText: 'Password',
@@ -93,7 +92,7 @@ class _SignupFormState extends State<SignupForm> {
               }
             },
           ),
-          verticalSpace(18),
+          verticalSpace(24),
         ],
       ),
     );

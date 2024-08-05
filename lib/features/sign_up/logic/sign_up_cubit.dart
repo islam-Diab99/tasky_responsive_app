@@ -22,6 +22,15 @@ class SignupCubit extends Cubit<SignupState> {
   TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
+  void _disposeControllers() {
+    phoneController.clear();
+    passwordController.clear();
+    experienceLevelController.clear();
+    addressController.clear();
+    yearsOfExperinceController.clear();
+    nameController.clear();
+  }
+
   void emitSignupStates() async {
     emit(const SignupState.signupLoading());
     final response = await _signupRepo.signup(
@@ -35,9 +44,11 @@ class SignupCubit extends Cubit<SignupState> {
       ),
     );
     response.when(success: (signupResponse) async {
+    
       await saveUserAcessToken(signupResponse.accessToken ?? '');
       await saveUserRefreshToken(signupResponse.refreshToken ?? '');
       await saveUserId(signupResponse.id!);
+        _disposeControllers();
       emit(SignupState.signupSuccess(signupResponse));
     }, failure: (error) {
       emit(SignupState.signupError(error: error.apiErrorModel.message ?? ''));

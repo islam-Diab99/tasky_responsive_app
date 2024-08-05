@@ -30,6 +30,7 @@ class AppTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 326.w,
+      height: 50.h,
       child: TextButton(
         style: ButtonStyle(
           shape: WidgetStateProperty.all<RoundedRectangleBorder>(

@@ -8,8 +8,19 @@ import 'package:tasky/features/profile/logic/profile_cubit.dart';
 import 'package:tasky/features/profile/logic/profile_states.dart';
 import 'package:tasky/features/profile/ui/widgets/profile_info_list.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    context.read<ProfileCubit>()..emitProfileStates();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

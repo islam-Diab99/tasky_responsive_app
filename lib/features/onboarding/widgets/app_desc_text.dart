@@ -16,11 +16,11 @@ class AppDescriptionTextAndStartButton extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.w),
+          padding: EdgeInsets.symmetric(horizontal: 22.w),
           child: Column(
             children: [
               SizedBox(
-                width: screenWidth * .6,
+                width: 235.w,
                 child: Text(
                   AppConstants.taskManagementTitle,
                   style: TextStyles.font24BlackBold,
@@ -32,15 +32,14 @@ class AppDescriptionTextAndStartButton extends StatelessWidget {
                 width: screenWidth * .8,
                 child: Text(
                   AppConstants.taskManagementDescription,
-                  style: TextStyles.font14GreyRegular.copyWith(
-                    height: 1.8,
-                  ),
+                  style: TextStyles.font14GreyRegular
+                      .copyWith(height: 1.8, fontWeight: FontWeight.w500),
                   textAlign: TextAlign.center,
                   textHeightBehavior:
                       const TextHeightBehavior(applyHeightToLastDescent: true),
                 ),
               ),
-              verticalSpace(16),
+              verticalSpace(20),
               const GetStartedButton(),
             ],
           ),

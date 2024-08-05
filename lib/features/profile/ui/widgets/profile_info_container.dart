@@ -26,7 +26,9 @@ class ProfileInfoContainer extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyles.font12GrayMedium,
+              style: TextStyles.font12GrayMedium.copyWith(
+                color: ColorsManager.profileContainerTitleColor,
+              ),
             ),
             Text(
               value,

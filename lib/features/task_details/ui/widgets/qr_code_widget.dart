@@ -8,17 +8,17 @@ class QRCodeWidget extends StatelessWidget {
     required this.taskId,
   });
 
-  final String  taskId;
+  final String taskId;
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 40.h),
+        padding: EdgeInsets.symmetric(vertical: 22.h),
         child: SizedBox(
-          height: 300.h,
-          width: 300.w,
+          height: 280.h,
+          width: 280.w,
           child: PrettyQrView.data(
             data: taskId,
           ),

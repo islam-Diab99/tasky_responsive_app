@@ -16,12 +16,10 @@ class ColorChangingPriorityContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12.h),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(13.r),
-          color: getRightPriorityContainerColor(
-              priority)),
+          color: getRightPriorityContainerColor(priority)),
       child: Row(
         children: [
           SvgPicture.asset(
@@ -31,9 +29,8 @@ class ColorChangingPriorityContainer extends StatelessWidget {
           ),
           horizontalSpace(20),
           Text('$priority Priority',
-              style: TextStyles.font16GreyBold.copyWith(
-                  color: getRightPriorityTextColor(
-                      priority))),
+              style: TextStyles.font16GreyBold
+                  .copyWith(color: getRightPriorityTextColor(priority))),
         ],
       ),
     );
