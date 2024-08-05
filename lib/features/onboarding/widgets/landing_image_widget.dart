@@ -14,7 +14,7 @@ class LandingImage extends StatelessWidget {
       ImagesManager.landingImage,
       height: screenheight * .64,
       width: double.infinity,
-      fit: BoxFit.cover,
+      fit: BoxFit.contain,
     );
   }
 }
