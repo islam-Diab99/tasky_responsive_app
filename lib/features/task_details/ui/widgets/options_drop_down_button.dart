@@ -7,6 +7,7 @@ import 'package:tasky/Core/routing/routes.dart';
 import 'package:tasky/Core/theming/colors.dart';
 import 'package:tasky/Core/theming/font_weight_helper.dart';
 import 'package:tasky/Core/theming/styles.dart';
+import 'package:tasky/features/add_task/logic/add_edit_task_cubit.dart';
 import 'package:tasky/features/home/logic/home_cubit.dart';
 
 class OptionsDropDownButton extends StatefulWidget {
@@ -27,6 +28,8 @@ class OptionsDropDownButtonState extends State<OptionsDropDownButton> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
+      color: ColorsManager.textBlack,
+      iconSize: 25.h,
       key: _menuKey,
       icon: const Icon(Icons.more_vert),
       onPressed: () =>
@@ -52,7 +55,7 @@ void _showCustomMenu(overlayEntry, context, TaskDetailsScreenArgs task) {
             child: Stack(
               children: [
                 Positioned(
-                  right: 20.w,
+                  right: 10.w,
                   top: 40.h,
                   width: 90.w,
                   child: GestureDetector(
@@ -68,6 +71,8 @@ void _showCustomMenu(overlayEntry, context, TaskDetailsScreenArgs task) {
                             children: [
                               InkWell(
                                 onTap: () {
+                                  context.read<AddEditTaskCubit>().isEdit =
+                                      true;
                                   overlayEntry?.remove();
                                   context.pushReplacementNamed(
                                       Routes.addEditTodoScreen,
@@ -139,9 +144,9 @@ class CustomShapePainter extends CustomPainter {
     final paint = Paint()..color = Colors.white;
     final path = Path();
 
-    path.moveTo(size.width * 0.5 + (7.w), 0);
+    path.moveTo(size.width * 0.5 + (12.w), 0);
     path.lineTo(size.width * 0.5 + (20.w), -7.h);
-    path.lineTo(size.width * 0.5 + (25.w), 0);
+    path.lineTo(size.width * 0.5 + (28.w), 0);
     path.addRRect(RRect.fromRectAndRadius(
         Rect.fromLTWH(0, 0, size.width, size.height), Radius.circular(15.r)));
 

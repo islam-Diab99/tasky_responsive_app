@@ -26,54 +26,49 @@ class TaskDetailsScreen extends StatelessWidget {
   SafeArea _buildTaskScreenBody(TaskDetailsScreenArgs taskArguments) {
     return SafeArea(
       child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TaskDetailsAppBar(
-                taskArgument: taskArguments,
-              ),
-              verticalSpace(40.h),
-              MyCustomCahedNetworkImage(
-                taskImage: taskArgument.taskImage,
-                height: 225.h,
-                width: 375.w,
-                fit: BoxFit.contain,
-              ),
-              verticalSpace(60.h),
-              LayoutBuilder(
-                builder: (context, constrains) => Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: constrains.maxWidth > 1000 ? 300.w : 0.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        taskArgument.taskTitle,
-                        style: TextStyles.font24BlackBold,
-                      ),
-                      verticalSpace(20.h),
-                      Text(
-                        taskArgument.taskDesc,
-                        style:
-                            TextStyles.font12GrayMedium.copyWith(fontSize: 14),
-                      ),
-                      verticalSpace(20.h),
-                      const EndDateContainer(),
-                      verticalSpace(10.h),
-                      ColorChanagingStatusContainer(
-                          status: taskArgument.status),
-                      verticalSpace(10),
-                      ColorChangingPriorityContainer(
-                          priority: taskArgument.priority),
-                      QRCodeWidget(taskId: taskArgument.id),
-                    ],
-                  ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            TaskDetailsAppBar(
+              taskArgument: taskArguments,
+            ),
+            verticalSpace(10.h),
+            LayoutBuilder(
+              builder: (context, constrains) => Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: constrains.maxWidth > 1000 ? 300.w : 22.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    MyCustomCahedNetworkImage(
+                      taskImage: taskArgument.taskImage,
+                      height: 225.h,
+                      width: constrains.maxWidth,
+                      fit: BoxFit.cover,
+                    ),
+                    verticalSpace(16.h),
+                    Text(
+                      taskArgument.taskTitle,
+                      style: TextStyles.font24BlackBold,
+                    ),
+                    verticalSpace(8.h),
+                    Text(
+                      taskArgument.taskDesc,
+                      style: TextStyles.font12GrayMedium.copyWith(fontSize: 14),
+                    ),
+                    verticalSpace(16.h),
+                    const EndDateContainer(),
+                    verticalSpace(8.h),
+                    ColorChanagingStatusContainer(status: taskArgument.status),
+                    verticalSpace(8.h),
+                    ColorChangingPriorityContainer(
+                        priority: taskArgument.priority),
+                    QRCodeWidget(taskId: taskArgument.id),
+                  ],
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );

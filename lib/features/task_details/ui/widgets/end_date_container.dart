@@ -14,7 +14,7 @@ class EndDateContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10.h),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(13.r),
           color: ColorsManager.containerMain),
@@ -28,7 +28,7 @@ class EndDateContainer extends StatelessWidget {
                 style: TextStyles.font12GrayRegular.copyWith(fontSize: 11),
               ),
               Text(
-                '12/07/2024',
+                '30 June, 2022',
                 style: TextStyles.font16BlackBold
                     .copyWith(fontWeight: FontWeightHelper.regular),
               ),

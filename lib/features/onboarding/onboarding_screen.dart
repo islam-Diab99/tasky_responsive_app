@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasky/features/onboarding/widgets/app_desc_text.dart';
 import 'package:tasky/features/onboarding/widgets/landing_image_widget.dart';
 
@@ -24,7 +23,7 @@ class OnboardingScreen extends StatelessWidget {
             child: LandingImage(),
           ),
           Positioned(
-            bottom: 70.h,
+            bottom: 75,
             left: 0,
             right: 0,
             child: const AppDescriptionTextAndStartButton(),

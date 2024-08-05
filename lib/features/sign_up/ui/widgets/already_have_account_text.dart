@@ -11,7 +11,7 @@ class AlreadyHaveAccountText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(vertical: 20.h),
+      padding: EdgeInsets.only(top: 24.h, bottom: 15.h),
       child: RichText(
         textAlign: TextAlign.center,
         text: TextSpan(

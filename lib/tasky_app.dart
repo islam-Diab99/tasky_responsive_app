@@ -23,29 +23,29 @@ class TaskyApp extends StatelessWidget {
     double designWidth =
         Platform.isWindows ? MediaQuery.of(context).size.width : 375;
     double designHeight =
-        Platform.isWindows ? MediaQuery.of(context).size.height : 812;
+        Platform.isWindows ? MediaQuery.of(context).size.height : 768;
     return ScreenUtilInit(
         designSize: Size(designWidth, designHeight),
         minTextAdapt: true,
         child: MultiBlocProvider(
-             providers: [
-        BlocProvider<LoginCubit>(
-          create: (context) => getIt<LoginCubit>(),
-        ),
-        BlocProvider<SignupCubit>(
-          create: (context) => getIt<SignupCubit>(),
-        ),
-        BlocProvider<HomeCubit>(
-          create: (context) => getIt<HomeCubit>()..getTasksForFirstTime(),
-        ),
-        BlocProvider<AddEditTaskCubit>(
-          create: (context) => getIt<AddEditTaskCubit>(),
-        ),
-        BlocProvider<ProfileCubit>(
-          create: (context) => getIt<ProfileCubit>()..emitProfileStates(),
-        ),
-        // Add more providers if needed
-      ],
+          providers: [
+            BlocProvider<LoginCubit>(
+              create: (context) => getIt<LoginCubit>(),
+            ),
+            BlocProvider<SignupCubit>(
+              create: (context) => getIt<SignupCubit>(),
+            ),
+            BlocProvider<HomeCubit>(
+              create: (context) => getIt<HomeCubit>()..getTasksForFirstTime(),
+            ),
+            BlocProvider<AddEditTaskCubit>(
+              create: (context) => getIt<AddEditTaskCubit>(),
+            ),
+            BlocProvider<ProfileCubit>(
+              create: (context) => getIt<ProfileCubit>()
+            ),
+            // Add more providers if needed
+          ],
           child: MaterialApp(
             title: 'Tasky',
             theme: ThemeData(

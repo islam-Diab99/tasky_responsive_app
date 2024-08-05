@@ -4,7 +4,6 @@ class AppRegex {
     if (numberRegex.hasMatch(input)) {
       int years = int.parse(input);
       if (years >= 0 && years <= 50) {
-        // Adjust the range as needed
         return true;
       }
     }

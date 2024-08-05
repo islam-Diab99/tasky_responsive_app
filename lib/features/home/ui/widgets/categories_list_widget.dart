@@ -6,8 +6,6 @@ import 'package:tasky/Core/theming/styles.dart';
 import 'package:tasky/features/home/logic/home_cubit.dart';
 import 'package:tasky/features/home/logic/home_states.dart';
 
-
-
 class CategoriesListWidget extends StatefulWidget {
   const CategoriesListWidget({
     super.key,
@@ -39,7 +37,7 @@ class CategoriesListWidgetState extends State<CategoriesListWidget> {
                   return Container(
                     margin: EdgeInsets.symmetric(horizontal: 4.w),
                     padding:
-                        EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                        EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
                     decoration: BoxDecoration(
                       color: homeCubit.selectedIndex == index
                           ? ColorsManager.mainColor

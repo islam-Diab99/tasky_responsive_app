@@ -55,6 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+//floating action button
   Widget _buildFloatingActionButtons() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -62,12 +63,13 @@ class _HomeScreenState extends State<HomeScreen> {
         Platform.isWindows
             ? const SizedBox()
             : const BarcodeFloatingActionButton(),
-        verticalSpace(20.h),
+        verticalSpace(14.h),
         const AddTaskFloatingActionButton(),
       ],
     );
   }
 
+//body
   SafeArea _buildHomeScreenBody(HomeCubit homeCubit, BuildContext context) {
     return SafeArea(
       child: RefreshIndicator(
@@ -77,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ScrollConfiguration(
           behavior: buildScrollBehavior(context),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            padding: EdgeInsets.symmetric(horizontal: 22.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -89,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.symmetric(
                           horizontal: constraints.maxWidth >= 1000 ? 300.w : 0,
                         ),
-                        child: _buildMainContent(),
+                        child: _buildCategryBarAndTasksList(),
                       );
                     },
                   ),
@@ -102,7 +104,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildMainContent() {
+//maincontent
+  Widget _buildCategryBarAndTasksList() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -114,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         const CategoriesListWidget(),
-        verticalSpace(20),
+        verticalSpace(30),
         Expanded(
           child: HomeScreenBlocBuilder(scrollController: _scrollController),
         ),

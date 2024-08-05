@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasky/Core/constatnts.dart';
-import 'package:tasky/Core/helpers/spacing.dart';
-
 import 'package:tasky/Core/theming/styles.dart';
 import 'package:tasky/features/sign_up/ui/widgets/sign_up_bloc_listener.dart';
 import 'package:tasky/features/sign_up/ui/widgets/sign_up_button.dart';
@@ -37,16 +35,16 @@ class SignupScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.30),
+                          height: MediaQuery.of(context).size.height * 0.28),
                       Padding(
-                        padding: EdgeInsets.only(bottom: 24.h, left: 30.w),
+                        padding: EdgeInsets.only(bottom: 24.h, left: 25.w),
                         child: Text(
                           AppConstants.signUp,
                           style: TextStyles.font24BlackBold,
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30.w),
+                        padding: EdgeInsets.symmetric(horizontal: 25.w),
                         child: const Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [

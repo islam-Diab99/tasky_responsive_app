@@ -8,6 +8,11 @@ class ColorsManager {
   static const Color lighterGray = Color(0xFFEDEDED);
   static const Color moreLightGray = Color(0xFFFDFDFF);
   static const Color moreLighterGray = Color(0xFFF5F5F5);
+  static const Color textFieldBorderGrey = Color(0xFFBABABA);
+  static const Color textFieldHintGrey = Color(0xFF7F7F7F);
+  static const Color categoryContainerLightGrey = Color(0xFF7C7C80);
+  static const Color barcodeFABColor = Color(0xFFEBE5FF);
+  static const Color profileContainerTitleColor = Color(0xFFA6A6A6);
   //
   static const Color mainColor = Color(0xFF5F33E1);
   static const Color textBlack = Color(0xFF24252C);

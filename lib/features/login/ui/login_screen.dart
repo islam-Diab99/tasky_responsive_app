@@ -43,13 +43,13 @@ class LoginScreen extends StatelessWidget {
                           children: [
                             const PhoneAndPassword(),
                             AppTextButton(
-                              buttonText: "Login",
+                              buttonText: "Sign In",
                               textStyle: TextStyles.font16WhiteSemiBold,
                               onPressed: () {
                                 validateThenDoLogin(context);
                               },
                             ),
-                            verticalSpace(16),
+                            verticalSpace(24),
                             const DontHaveAccountText(),
                             const LoginBlocListener(),
                           ],

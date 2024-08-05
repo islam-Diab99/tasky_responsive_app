@@ -14,7 +14,8 @@ import 'package:tasky/features/add_task/network/upload_image_service.dart';
 
 class AddEditTaskCubit extends Cubit<AddEditTaskStates> {
   final AddEditTaskRepo _addEditTaskRepo;
-  AddEditTaskCubit(this._addEditTaskRepo) : super(const AddEditTaskStates.initial());
+  AddEditTaskCubit(this._addEditTaskRepo)
+      : super(const AddEditTaskStates.initial());
 
   // Form fields controllers
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -44,8 +45,10 @@ class AddEditTaskCubit extends Cubit<AddEditTaskStates> {
       final response = await uploadImageService(image);
       if (response != null && response.image != null) {
         emit(AddEditTaskStates.uploadImageSuccess(response.image));
+        taskImage = null;
       } else {
-        emit(const AddEditTaskStates.uploadImageError(error: 'An error occurred'));
+        emit(const AddEditTaskStates.uploadImageError(
+            error: 'An error occurred'));
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -68,13 +71,16 @@ class AddEditTaskCubit extends Cubit<AddEditTaskStates> {
       dueDate: dueDateController.text,
     ));
     response.when(
-      success: (addEditTaskResponse) => emit(const AddEditTaskStates.success('')),
-      failure: (error) => emit(AddEditTaskStates.error(error: error.apiErrorModel.message ?? '')),
+      success: (addEditTaskResponse) =>
+          emit(const AddEditTaskStates.success('')),
+      failure: (error) => emit(
+          AddEditTaskStates.error(error: error.apiErrorModel.message ?? '')),
     );
   }
 
   // Update task
-  Future<void> emitUpdateTaskStates(String? imagePath, String taskId, BuildContext context) async {
+  Future<void> emitUpdateTaskStates(
+      String? imagePath, String taskId, BuildContext context) async {
     if (taskImage != null) {
       await emitUplodImageStates(context);
     } else {
@@ -92,8 +98,10 @@ class AddEditTaskCubit extends Cubit<AddEditTaskStates> {
         taskId,
       );
       response.when(
-        success: (addEditTaskResponse) => emit(const AddEditTaskStates.success('')),
-        failure: (error) => emit(AddEditTaskStates.error(error: error.apiErrorModel.message ?? '')),
+        success: (addEditTaskResponse) =>
+            emit(const AddEditTaskStates.success('')),
+        failure: (error) => emit(
+            AddEditTaskStates.error(error: error.apiErrorModel.message ?? '')),
       );
     }
   }

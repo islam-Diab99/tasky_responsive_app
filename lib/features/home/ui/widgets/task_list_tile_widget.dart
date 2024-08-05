@@ -22,7 +22,7 @@ class TaskListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 30.h),
+      padding: EdgeInsets.only(bottom: 0.h),
       child: GestureDetector(
         onTap: () => context.pushNamed(Routes.taskDetails,
             arguments: TaskDetailsScreenArgs(
@@ -34,20 +34,21 @@ class TaskListTile extends StatelessWidget {
                 status: task.status!)),
         child: Container(
           color: Colors.white,
+          height: 96.h,
           padding: EdgeInsets.symmetric(horizontal: 5.w),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ClipRRect(
                   borderRadius: BorderRadius.circular(50.r),
                   child: MyCustomCahedNetworkImage(
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                     height: 64.h,
-                    width: 64.w,
+                    width: 64.h,
                     taskImage: task.image!,
                   )),
-              SizedBox(width: 20.w),
+              SizedBox(width: 16.w),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,9 +57,11 @@ class TaskListTile extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            task.title!,
+                            capitalizeFirstLetter(
+                              task.title!,
+                            ),
                             style: TextStyle(
-                              fontSize: 18.sp,
+                              fontSize: 20.sp,
                               fontWeight: FontWeight.bold,
                             ),
                             overflow: TextOverflow.ellipsis,
@@ -67,28 +70,28 @@ class TaskListTile extends StatelessWidget {
                         SizedBox(width: 10.w),
                         Container(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 8.w, vertical: 4.h),
+                              horizontal: 9.w, vertical: 5.h),
                           decoration: BoxDecoration(
                             color: getRightStatusContainerColor(task.status!),
-                            borderRadius: BorderRadius.circular(12.r),
+                            borderRadius: BorderRadius.circular(5.r),
                           ),
-                          child: Text(task.status!,
+                          child: Text(capitalizeFirstLetter(task.status!),
                               style: TextStyles.font12RedMedium.copyWith(
                                   color:
                                       getRightStatusTextColor(task.status!))),
                         ),
                       ],
                     ),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 5.h),
                     Text(
-                      task.desc!,
+                      capitalizeFirstLetter(task.desc!),
                       style: TextStyle(
                         fontSize: 14.sp,
                         color: Colors.grey,
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 5.h),
                     Row(
                       children: [
                         SvgPicture.asset(
@@ -97,7 +100,7 @@ class TaskListTile extends StatelessWidget {
                           width: 16.w,
                         ),
                         SizedBox(width: 4.w),
-                        Text(task.priority!,
+                        Text(capitalizeFirstLetter(task.priority!),
                             style: TextStyles.font12MainPurpleMedium.copyWith(
                                 fontSize: 14.sp,
                                 color:

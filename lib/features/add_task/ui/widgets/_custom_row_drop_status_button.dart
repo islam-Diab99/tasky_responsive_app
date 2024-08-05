@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tasky/Core/assets_manager.dart';
 import 'package:tasky/Core/helpers/spacing.dart';
 import 'package:tasky/Core/theming/colors.dart';
 import 'package:tasky/Core/theming/styles.dart';
-
 
 class CustomEnumRowButton<T> extends StatefulWidget {
   final T initialValue;
@@ -46,26 +45,28 @@ class CustomEnumRowButtonState<T> extends State<CustomEnumRowButton<T>> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: (details) async {
+        FocusScope.of(context).requestFocus(new FocusNode());
         selectedValue = await _showPopupMenu(context, details.globalPosition);
         widget.onValueSelected(selectedValue);
         setState(() {});
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        height: 50,
+        height: 50.h,
         width: double.infinity,
         decoration: BoxDecoration(
             color: widget.containerColor(selectedValue),
-            borderRadius: BorderRadius.circular(20)),
+            borderRadius: BorderRadius.circular(15.r)),
         child: Row(
           children: [
-           widget.flagImage!=null? SvgPicture.asset(widget.flagImage!(selectedValue)):const SizedBox(),
-
+            widget.flagImage != null
+                ? SvgPicture.asset(widget.flagImage!(selectedValue))
+                : const SizedBox(),
             horizontalSpace(10),
             Text(
               widget.displayName(selectedValue),
-              style: TextStyles.font12MainPurpleMedium.copyWith(
-                  color: widget.textColor(selectedValue)),
+              style: TextStyles.font12MainPurpleMedium
+                  .copyWith(color: widget.textColor(selectedValue)),
             ),
             const Spacer(),
             SvgPicture.asset(IconsManager.arrowDown),
@@ -80,11 +81,12 @@ class CustomEnumRowButtonState<T> extends State<CustomEnumRowButton<T>> {
         Overlay.of(context).context.findRenderObject() as RenderBox;
 
     return await showMenu<T>(
+      constraints: BoxConstraints(minWidth: double.infinity),
       context: context,
-      color: ColorsManager.containerMain, 
+      color: ColorsManager.containerMain,
       position: RelativeRect.fromRect(
-        position & const Size(40, 40), 
-        Offset.zero & overlay.size, 
+        position & const Size(40, 40),
+        Offset.zero & overlay.size,
       ),
       items: widget.values.map((value) {
         return PopupMenuItem<T>(
@@ -94,8 +96,7 @@ class CustomEnumRowButtonState<T> extends State<CustomEnumRowButton<T>> {
       }).toList(),
       elevation: 8.0,
     ).then((value) {
-      return value ?? widget.initialValue; 
+      return value ?? widget.initialValue;
     });
   }
 }
-

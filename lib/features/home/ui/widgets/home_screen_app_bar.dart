@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tasky/Core/assets_manager.dart';
 import 'package:tasky/Core/constatnts.dart';
@@ -20,7 +21,6 @@ class HomeScreenAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        horizontalSpace(20),
         Text(
           AppConstants.logo,
           style: TextStyles.font24BlackBold,
@@ -30,13 +30,16 @@ class HomeScreenAppBar extends StatelessWidget {
           onTap: () {
             context.pushNamed(Routes.profile);
           },
-          child: SvgPicture.asset(IconsManager.profileIcon),
+          child: SvgPicture.asset(
+            IconsManager.profileIcon,
+            height: 24.h,
+            width: 24.w,
+          ),
         ),
-        horizontalSpace(10),
+        horizontalSpace(20),
         GestureDetector(
             onTap: () async {
               await SharedPrefHelper.clearAllSecuredData();
-              
 
               if (mounted) {
                 context.pushNamedAndRemoveUntil(
@@ -47,8 +50,12 @@ class HomeScreenAppBar extends StatelessWidget {
                 );
               }
             },
-            child: SvgPicture.asset(IconsManager.exitIcon)),
-        horizontalSpace(20),
+            child: SvgPicture.asset(
+              IconsManager.exitIcon,
+              height: 24.h,
+              width: 24.w,
+            )),
+        horizontalSpace(22),
       ],
     );
   }

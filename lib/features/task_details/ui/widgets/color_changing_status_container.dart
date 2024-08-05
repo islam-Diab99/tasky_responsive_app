@@ -14,18 +14,15 @@ class ColorChanagingStatusContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15.h),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(13.r),
-          color: getRightStatusContainerColor(
-              status)),
+          color: getRightStatusContainerColor(status)),
       child: Row(
         children: [
           Text(status,
-              style: TextStyles.font16GreyBold.copyWith(
-                  color: getRightStatusTextColor(
-                      status))),
+              style: TextStyles.font16GreyBold
+                  .copyWith(color: getRightStatusTextColor(status))),
         ],
       ),
     );

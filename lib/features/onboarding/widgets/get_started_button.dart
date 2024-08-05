@@ -16,7 +16,7 @@ class GetStartedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 326.w,
+      width: 331.w,
       child: TextButton(
         onPressed: () {
           context.pushReplacementNamed(Routes.signUpScreen);
@@ -25,7 +25,7 @@ class GetStartedButton extends StatelessWidget {
           backgroundColor: WidgetStateProperty.all(ColorsManager.mainColor),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           minimumSize: WidgetStateProperty.all(
-            Size(double.infinity, 52.h),
+            Size(double.infinity, 49.h),
           ),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
@@ -40,11 +40,11 @@ class GetStartedButton extends StatelessWidget {
               AppConstants.letsStart,
               style: TextStyles.font19WhiteBold,
             ),
-            horizontalSpace(7),
+            horizontalSpace(8),
             SvgPicture.asset(
               IconsManager.arrowLeftLight,
               width: 14.w,
-              height: 10.h,
+              height: 14.h,
             )
           ],
         ),

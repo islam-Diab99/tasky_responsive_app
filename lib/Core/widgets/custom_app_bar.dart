@@ -13,11 +13,11 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.max,
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          padding: EdgeInsets.only(left: 22.w, right: 10.w),
           child: GestureDetector(
             onTap: () => context.pop(),
             child: Image.asset(
@@ -31,7 +31,6 @@ class CustomAppBar extends StatelessWidget {
           screenTitle,
           style: TextStyles.font16BlackBold,
         ),
-     
       ],
     );
   }

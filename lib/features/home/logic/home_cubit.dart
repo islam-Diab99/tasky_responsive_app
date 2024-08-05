@@ -18,11 +18,10 @@ class HomeCubit extends Cubit<HomeState> {
   List<TodoResponse>? items;
   List<TodoResponse>? filteredItems;
   bool hasMoreItems = true;
-
-  List<String> categoriesList = ['all', 'inProgress', 'waiting', 'finished'];
+  List<String> categoriesList = ['All', 'Inprogress', 'Waiting', 'Finished'];
   int selectedIndex = 0;
 
-  //get tasks for first time or refresh-----
+  //get tasks for first time or refresh---------------
 
   Future getTasksForFirstTime() async {
     selectedIndex = 0;
@@ -34,7 +33,8 @@ class HomeCubit extends Cubit<HomeState> {
     final response = await _homeRepo.getTodoList(1);
     response.when(success: (todoResponse) async {
       items!.addAll(todoResponse);
-      filteredItems = items;
+      changeTaskStatusCategory(category);
+     
       emit(HomeState.getTasksSuccess(items));
     }, failure: (error) {
       emit(HomeState.getTasksError(error: error.apiErrorModel.message ?? ''));
@@ -70,12 +70,15 @@ class HomeCubit extends Cubit<HomeState> {
   //change tasks category-----------
 
   void changeTaskStatusCategory(String category) async {
-    if (category == 'all') {
+    if (category.toLowerCase() == 'all') {
       selectedIndex = 0;
       filteredItems = items!;
     } else {
-      selectedIndex = categoriesList.indexWhere((item) => item == category);
-      filteredItems = items!.where((item) => item.status == category).toList();
+      selectedIndex = categoriesList
+          .indexWhere((item) => item.toLowerCase() == category.toLowerCase());
+      filteredItems = items!
+          .where((item) => item.status == category.toLowerCase())
+          .toList();
     }
     emit(HomeState.changeStatusCategory(
         category: category, filteredItems: filteredItems!));

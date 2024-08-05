@@ -5,7 +5,6 @@ import 'package:tasky/Core/theming/styles.dart';
 import 'package:tasky/Core/widgets/app_text_button.dart';
 import 'package:tasky/features/sign_up/logic/sign_up_cubit.dart';
 
-
 class SignUPButton extends StatelessWidget {
   const SignUPButton({super.key});
   void _validateThenDoSignup(BuildContext context) {
@@ -17,12 +16,12 @@ class SignUPButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 326.w,
+      height: 50.h,
+      width: double.infinity,
       child: AppTextButton(
         buttonText: "Sign Up",
         textStyle: TextStyles.font16WhiteSemiBold,
         onPressed: () {
-      
           _validateThenDoSignup(context);
         },
       ),
