@@ -67,21 +67,3 @@ class AppInterceptor extends InterceptorsWrapper {
   }
 }
 
-Future<FormData?> _recreateFormData(FormData data) async {
-  final formData = FormData();
-  // Re-add form fields
-  for (final field in data.fields) {
-    formData.fields.add(MapEntry(field.key, field.value));
-  }
-  // Re-add files
-  for (final file in data.files) {
-    final MultipartFile multipartFile = file.value;
-    final newMultipartFile = await MultipartFile.fromFile(
-      multipartFile.filename!,
-      filename: multipartFile.filename,
-      contentType: multipartFile.contentType,
-    );
-    formData.files.add(MapEntry(file.key, newMultipartFile));
-  }
-  return formData;
-}
