@@ -36,7 +36,7 @@ class TaskyApp extends StatelessWidget {
               create: (context) => getIt<SignupCubit>(),
             ),
             BlocProvider<HomeCubit>(
-              create: (context) => getIt<HomeCubit>()..getTasksForFirstTime(),
+              create: (context) => getIt<HomeCubit>(),
             ),
             BlocProvider<AddEditTaskCubit>(
               create: (context) => getIt<AddEditTaskCubit>(),

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasky/Core/helpers/extensions.dart';
-import 'package:tasky/features/home/logic/home_cubit.dart';
 import 'package:tasky/features/login/logic/cubit/login_cubit.dart';
 import 'package:tasky/features/login/logic/cubit/login_state.dart';
-
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/styles.dart';
@@ -30,16 +28,14 @@ class LoginBlocListener extends StatelessWidget {
             );
           },
           success: (loginResponse) {
-                context.read<HomeCubit>().getTasksForFirstTime().then((_){
+       
                    context.pushNamedAndRemoveUntil(
                             Routes.homeScreen,
                             predicate: (Route<dynamic> route) {
                            return false;
                             },
                           );
-                }
-                  
-                );
+                
 
            
           },

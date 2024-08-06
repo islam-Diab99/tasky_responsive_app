@@ -18,7 +18,14 @@ class HomeCubit extends Cubit<HomeState> {
   List<TodoResponse>? items;
   List<TodoResponse>? filteredItems;
   bool hasMoreItems = true;
-  List<String> categoriesList = ['All', 'Inprogress', 'Waiting', 'Finished'];
+  List<String> categoriesList = ['All', 'InProgress', 'Waiting', 'Finished'];
+  Map<String, dynamic> categoriesTextToApiValue = {
+    'All':'all',
+    'InProgress':'inProgress',
+    'Waiting':'waiting',
+    'Finished':'finished'
+  };
+
   int selectedIndex = 0;
 
   //get tasks for first time or refresh---------------
@@ -34,7 +41,6 @@ class HomeCubit extends Cubit<HomeState> {
     response.when(success: (todoResponse) async {
       items!.addAll(todoResponse);
       changeTaskStatusCategory(category);
-     
       emit(HomeState.getTasksSuccess(items));
     }, failure: (error) {
       emit(HomeState.getTasksError(error: error.apiErrorModel.message ?? ''));
@@ -59,7 +65,6 @@ class HomeCubit extends Cubit<HomeState> {
       }
       items!.addAll(todoResponse);
       filteredItems = items;
-
       emit(HomeState.getTasksSuccess(items));
     }, failure: (error) {
       isLoadMoreLoading = false;
@@ -77,7 +82,7 @@ class HomeCubit extends Cubit<HomeState> {
       selectedIndex = categoriesList
           .indexWhere((item) => item.toLowerCase() == category.toLowerCase());
       filteredItems = items!
-          .where((item) => item.status == category.toLowerCase())
+          .where((item) => item.status == categoriesTextToApiValue[category])
           .toList();
     }
     emit(HomeState.changeStatusCategory(

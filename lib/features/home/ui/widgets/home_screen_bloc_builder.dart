@@ -29,7 +29,7 @@ class HomeScreenBlocBuilder extends StatelessWidget {
         if (state is GetTasksLoading && !homeCubit.isLoadMoreLoading) {
           return const Center(child: CircularProgressIndicator());
         }
-        if (homeCubit.filteredItems != null) {
+       else if (homeCubit.filteredItems != null) {
           return homeCubit.filteredItems!.isNotEmpty
               ? ListView.builder(
                   physics: const AlwaysScrollableScrollPhysics(),
@@ -68,7 +68,7 @@ class HomeScreenBlocBuilder extends StatelessWidget {
                   ),
                 );
         } else {
-          return const CircularProgressIndicator();
+          return Center(child: const CircularProgressIndicator());
         }
       },
     );

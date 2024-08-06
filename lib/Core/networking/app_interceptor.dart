@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:tasky/Core/helpers/constants.dart';
 import 'package:tasky/Core/networking/dio_factory.dart';
@@ -18,14 +20,21 @@ class AppInterceptor extends InterceptorsWrapper {
       if (refreshToken != null) {
         final success = await _refreshToken(refreshToken);
         if (success) {
+          FormData? newFormData;
           final requestOptions = err.response?.requestOptions;
+          if (requestOptions!.data is FormData) {
+            newFormData = requestOptions.data.clone();
+          }
+
           if (requestOptions != null) {
             final newResponse = await DioFactory.getDio().request(
               requestOptions.baseUrl + requestOptions.path,
               options: Options(
                 method: requestOptions.method,
               ),
-              data: requestOptions.data,
+              data: requestOptions.data is FormData
+                  ? newFormData
+                  : requestOptions.data,
               queryParameters: requestOptions.queryParameters,
             );
             return handler.resolve(newResponse);
@@ -56,4 +65,23 @@ class AppInterceptor extends InterceptorsWrapper {
     }
     return false;
   }
+}
+
+Future<FormData?> _recreateFormData(FormData data) async {
+  final formData = FormData();
+  // Re-add form fields
+  for (final field in data.fields) {
+    formData.fields.add(MapEntry(field.key, field.value));
+  }
+  // Re-add files
+  for (final file in data.files) {
+    final MultipartFile multipartFile = file.value;
+    final newMultipartFile = await MultipartFile.fromFile(
+      multipartFile.filename!,
+      filename: multipartFile.filename,
+      contentType: multipartFile.contentType,
+    );
+    formData.files.add(MapEntry(file.key, newMultipartFile));
+  }
+  return formData;
 }
