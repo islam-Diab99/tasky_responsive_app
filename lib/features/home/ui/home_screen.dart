@@ -25,12 +25,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    context.read<HomeCubit>().getTasksForFirstTime();
     super.initState();
     _scrollController.addListener(_onScroll);
   }
 
   @override
   void dispose() {
+
     _scrollController
       ..removeListener(_onScroll)
       ..dispose();
