@@ -1,16 +1,34 @@
-# tasky
+# Tasky - Project Management App 💻📱
 
-A new Flutter project.
 
-## Getting Started
+**Tasky** is a comprehensive project management app designed for both desktop and mobile platforms, offering seamless integration and a modern, responsive UI.
 
-This project is a starting point for a Flutter application.
+## ✨ Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🔐 **JWT Authentication**: Supports refresh tokens and access tokens for secure login sessions.
+- 📲 **QR Code Sync**: Easily sync between mobile and desktop apps via QR code scanning and generation.
+- 🔄 **Infinite Scroll Pagination**: Smooth scrolling with infinite data loading.
+- 📤 **Pull to Refresh**: Effortless data refresh with pull-to-refresh functionality.
+- 📱 **Responsive Design**: Fully responsive, ensuring a great user experience on both mobile and desktop.
+- 🔐 **Secure Storage**: Secure sensitive data like tokens and IDs using Flutter Secure Storage.
+- 🔍 **CRUD Operations**: Manage tasks with full Create, Read, Update, and Delete functionality.
+- ✏️ **Custom Path for UI Drawing**: Unique and custom UI design elements.
+- 🌐 **Phone Number Validation**: Validates phone numbers based on country codes.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🛠️ Technologies Used
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Cubit**: For state management.
+- **Freezed**: For data modeling and unions.
+- **Retrofit**: For API communication.
+- **Json Serializable**: For automatic JSON serialization.
+- **Native Splash**: Custom splash screens.
+- **Get It**: Dependency injection for managing app resources.
+- **Image Picker**: To pick images from the user's device.
+- **Flutter Secure Storage**: For securely storing sensitive data.
+- **Cached Network Image**: For efficiently loading and caching images.
+
+## 🎥 Demo
+
+[![Tasky Demo Video](https://github.com/islam-Diab99/tasky_responsive_app/blob/main/demo.png)](https://www.youtube.com/watch?v=1po5UZDaYXg)
+
+Click on the thumbnail to watch the demo video!
